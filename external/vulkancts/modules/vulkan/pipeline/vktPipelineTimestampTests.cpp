@@ -1702,6 +1702,8 @@ void BasicGraphicsTestInstance::buildFrameBuffer (tcu::UVec2 renderSize, VkForma
 			1u,											// deUint32                     layers;
 		};
 
+		// Test if premature free is detected by validation layers.
+		vk.freeMemory(vkDevice, m_colorImageAlloc->getMemory(), nullptr);
 		m_framebuffer = createFramebuffer(vk, vkDevice, &framebufferParams);
 	}
 
